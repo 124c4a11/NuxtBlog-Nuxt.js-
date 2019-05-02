@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .el-header {
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #ebeef5;
   text-align: center;
 }
 </style>

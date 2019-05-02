@@ -6,9 +6,9 @@
   >
     <header class="post-card__header" slot="header">
       <h3 class="post-card__title">Post title</h3>
-      <span>
+      <small>
         <span class="el-icon-time"></span> {{ new Date().toLocaleString() }}
-      </span>
+      </small>
     </header>
 
     <div class="post-card__body">
@@ -16,11 +16,22 @@
     </div>
 
     <footer class="post-card__footer">
-      <el-button round>Open</el-button>
-      <span><span class="el-icon-message"></span> 12</span>
+      <el-button @click="openPost" round>Open</el-button>
+      <small><span class="el-icon-message"></span> 12</small>
     </footer>
   </el-card>
 </template>
+
+<script>
+export default {
+  methods: {
+    openPost() {
+      this.$router.push('/post/f');
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 .post-card {
@@ -44,6 +55,7 @@
 .post-card__img {
   display: block;
   width: 100%;
+  height: auto;
 }
 
 .post-card__footer { padding: 20px; }

@@ -1,25 +1,21 @@
 <template>
   <el-row type="flex" justify="center">
     <el-col :sm="18" :md="12" :lg="10">
-      <app-post-card
-        v-for="post in 3"
-        :key="post"
-      />
+      <app-post />
     </el-col>
   </el-row>
 </template>
 
-
 <script>
-import AppPostCard from '@/components/main/PostCard.vue'
+import AppPost from '@/components/main/Post'
 
 export default {
-  head: {
-    title: 'Home'
+  validate({ params }) {
+    return Boolean(params.id)
   },
 
   components: {
-    AppPostCard
+    AppPost
   }
 }
 </script>
