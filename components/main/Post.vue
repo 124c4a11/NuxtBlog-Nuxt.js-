@@ -33,11 +33,14 @@ export default {
 
 <style lang="scss" scoped>
 .post {
+  margin-bottom: 40px;
+
   p {
     font-size: 1.1rem;
     line-height: 1.42;
   }
 }
+
 .post__header-row {
   display: flex;
   justify-content: space-between;
