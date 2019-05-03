@@ -12,7 +12,12 @@
       <el-input v-model.trim="controls.text" type="textarea" />
     </el-form-item>
     <el-form-item>
-      <el-button native-type="submit" type="primary" round>Add comment</el-button>
+      <el-button
+        :loading="loading"
+        native-type="submit"
+        type="primary"
+        round
+      >Add comment</el-button>
       <el-button @click="resetForm('form')" round>Reset</el-button>
     </el-form-item>
   </el-form>
@@ -22,6 +27,8 @@
 export default {
   data () {
     return {
+      loading: false,
+
       controls: {
         name: '',
         text: ''
@@ -43,16 +50,25 @@ export default {
     onSubmit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
+          this.loading = true
+
+          const formData = {
+            postId: '',
+            name: this.controls.name,
+            text: this.controls.text
+          }
+
+          try {
+            this.$message.success('Comment added')
+          } catch (err) {
+            this.loading = false
+          }
         }
       });
     },
 
     resetForm(form) {
-      this.$refs[form].resetFields();
+      this.$refs[form].resetFields()
     }
   }
 }
