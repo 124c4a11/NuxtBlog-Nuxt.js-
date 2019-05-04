@@ -18,11 +18,16 @@ export const mutations = {
 
 export const actions = {
   async login({ commit, dispatch}, formData) {
-    const token = await new Promise((resolve) => {
-      setTimeout(resolve('mok-token'), 2000)
-    })
+    try {
+      const token = await new Promise((resolve) => {
+        setTimeout(resolve('mok-token'), 2000)
+      })
 
-    dispatch('setToken', token)
+      dispatch('setToken', token)
+    } catch (err) {
+      commit('setError', err, { root: true })
+      throw err
+    }
   },
 
   setToken({ commit }, token) {
