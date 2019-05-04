@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <a class="nav-logo" href="/">SSR Blog</a>
+    <router-link class="nav-logo" to="/">SSR Blog</router-link>
   </nav>
 </template>
 
