@@ -87,8 +87,14 @@ export default {
   mounted() {
     const { message } = this.$route.query
 
-    if (message === 'login') {
-      this.$message.warning('Sign in')
+    switch (message) {
+      case 'login':
+        this.$message.warning('Sign in')
+        break
+
+      case 'logout':
+        this.$message.success('Logout')
+        break
     }
   }
 }
