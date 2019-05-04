@@ -18,3 +18,13 @@ body {
 body { color: #303133; }
 
 .text-center { text-align: center; }
+
+/*================================================================
+  page transition
+================================================================*/
+
+.page-enter-active,
+.page-leave-active { transition: opacity .25s; }
+
+.page-enter,
+.page-leave-active { opacity: 0; }
