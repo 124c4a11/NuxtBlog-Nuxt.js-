@@ -82,6 +82,14 @@ export default {
     resetForm(form) {
       this.$refs[form].resetFields()
     }
+  },
+
+  mounted() {
+    const { message } = this.$route.query
+
+    if (message === 'login') {
+      this.$message.warning('Sign in')
+    }
   }
 }
 </script>
