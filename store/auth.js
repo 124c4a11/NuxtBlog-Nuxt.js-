@@ -1,5 +1,5 @@
 export const state = () => ({
-  token: null
+  token: true
 })
 
 export const getters = {
@@ -27,6 +27,14 @@ export const actions = {
     } catch (err) {
       commit('setError', err, { root: true })
       throw err
+    }
+  },
+
+  async createUser({ commit }, formData) {
+    try {
+      console.log(formData)
+    } catch (err) {
+
     }
   },
 
