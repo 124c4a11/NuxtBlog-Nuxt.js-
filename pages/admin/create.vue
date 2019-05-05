@@ -1,7 +1,7 @@
 <template>
   <div class="content-wrap">
-    <h1 v-if="!this.controls.title">Add Post</h1>
-    <h1 v-else>{{ this.controls.title }}</h1>
+    <h1 v-if="!controls.title">Add Post</h1>
+    <h1 v-else>{{ controls.title }}</h1>
 
 
     <el-form
@@ -23,9 +23,26 @@
           type="primary"
           round
         >Add Post</el-button>
-        <el-button @click="resetForm('form')" round>Reset</el-button>
+        <el-button
+          @click="previewVisible = true"
+          type="success"
+          icon="el-icon-view"
+          round
+        >Preview</el-button>
       </el-form-item>
     </el-form>
+
+    <el-dialog
+      title="Preview"
+      :visible.sync="previewVisible"
+    >
+      <div :key="controls.text">
+        <vue-markdown>{{controls.text}}</vue-markdown>
+      </div>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="previewVisible = false" round>Close</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -44,6 +61,8 @@ export default {
   data () {
     return {
       loading: false,
+
+      previewVisible: false,
 
       controls: {
         title: '',
@@ -85,10 +104,6 @@ export default {
           }
         }
       });
-    },
-
-    resetForm(form) {
-      this.$refs[form].resetFields()
     }
   }
 }
