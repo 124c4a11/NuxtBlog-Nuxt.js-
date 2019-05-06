@@ -18,17 +18,32 @@
       </el-form-item>
       <el-form-item>
         <el-button
-          :loading="loading"
-          native-type="submit"
-          type="primary"
-          round
-        >Add Post</el-button>
-        <el-button
           @click="previewVisible = true"
           type="success"
           icon="el-icon-view"
           round
         >Preview</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-upload
+          ref="upload"
+          drag
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :auto-upload="false"
+          :on-change="onImageChange"
+        >
+          <span class="el-icon-upload"></span>
+          <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+          <div class="el-upload__tip" slot="tip">jpg/png files</div>
+        </el-upload>
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          :loading="loading"
+          native-type="submit"
+          type="primary"
+          round
+        >Add Post</el-button>
       </el-form-item>
     </el-form>
 
@@ -60,6 +75,8 @@ export default {
 
   data () {
     return {
+      image: null,
+
       loading: false,
 
       previewVisible: false,
@@ -84,26 +101,36 @@ export default {
   methods: {
     onSubmit() {
       this.$refs.form.validate(async (valid) => {
-        if (valid) {
+        if (valid && this.image) {
           this.loading = true
 
           try {
             const formData = {
               title: this.controls.title,
-              text: this.controls.text
+              text: this.controls.text,
+              image: this.image
             }
 
             await this.$store.dispatch('posts/create', formData)
 
             this.$refs.form.resetFields()
+            this.image = null
             this.loading = false
+
+            this.$refs.upload.clearFiles()
 
             this.$message.success('Post added!')
           } catch (err) {
             this.loading = false
           }
+        } else {
+          this.$message.warning('All form fields must be filled!')
         }
       });
+    },
+
+    onImageChange(file, fileList) {
+      this.image = file.raw
     }
   }
 }
