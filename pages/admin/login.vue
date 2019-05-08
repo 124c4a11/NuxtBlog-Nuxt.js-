@@ -94,6 +94,10 @@ export default {
       case 'logout':
         this.$message.success('Logout')
         break
+
+      case 'session':
+        this.$message.warning('Session expired, please login again!')
+        break
     }
   }
 }
