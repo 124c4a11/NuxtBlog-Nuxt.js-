@@ -62,9 +62,8 @@ export default {
 
           try {
             const formData = {
-              postId: '',
-              name: this.controls.login,
-              text: this.controls.password
+              login: this.controls.login,
+              password: this.controls.password
             }
 
             await this.$store.dispatch('auth/createUser', formData)

@@ -32,9 +32,10 @@ export const actions = {
 
   async createUser({ commit }, formData) {
     try {
-      console.log(formData)
+      await this.$axios.post('/api/auth/admin/create', formData)
     } catch (err) {
-
+      commit('setError', err, { root: true })
+      throw err
     }
   },
 
