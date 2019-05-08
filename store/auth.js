@@ -3,6 +3,8 @@ export const state = () => ({
 })
 
 export const getters = {
+  token: (state) => state.token,
+
   isAuth: (state) => Boolean(state.token)
 }
 
@@ -38,10 +40,12 @@ export const actions = {
   },
 
   setToken({ commit }, token) {
+    this.$axios.setToken(token, 'Bearer')
     commit('setToken', token)
   },
 
   logout({ commit }) {
+    this.$axios.setToken(false)
     commit('clearToken')
   }
 }

@@ -1,4 +1,14 @@
 export default function ({ $axios, redirect, store }) {
+  $axios.interceptors.request.use((req) => {
+    const token = store.getters['auth/token']
+
+    if (token && !req.headers.common['Authorization']) {
+      req.headers.common['Authorization'] = `Bearer ${token}`
+    }
+
+    return req
+  })
+
   $axios.onError((err) => {
     if (err.response) {
       if (err.response.status === 401) {
