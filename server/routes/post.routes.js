@@ -28,6 +28,12 @@ router.get(
   postController.getById
 )
 
+router.get(
+  '/admin/get/analytics',
+  passport.authenticate('jwt', { session: false }),
+  postController.getAnalytics
+)
+
 router.put(
   '/admin/:id',
   passport.authenticate('jwt', { session: false }),

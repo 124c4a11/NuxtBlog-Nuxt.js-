@@ -82,5 +82,14 @@ export const actions = {
       commit('setError', err, { root: true })
       throw err
     }
+  },
+
+  async getAnalytics({ commit }) {
+    try {
+      return this.$axios.$get('/api/post/admin/get/analytics')
+    } catch (err) {
+      commit('setError', err, { root: true })
+      throw err
+    }
   }
 }
