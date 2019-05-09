@@ -6,6 +6,24 @@ export const getters = {}
 export const mutations = {}
 
 export const actions = {
+  async fetchPosts({ commit }) {
+    try {
+      return await this.$axios.$get('/api/post')
+    } catch (err) {
+      commit('setError', err, { root: true })
+      throw err
+    }
+  },
+
+  async fetchPostById({ commit }, id) {
+    try {
+      return await this.$axios.$get(`/api/post/admin/${id}`)
+    } catch (err) {
+      commit('setError', err, { root: true })
+      throw err
+    }
+  },
+
   async fetchAdminPosts({ commit }) {
     try {
       return await this.$axios.$get('/api/post/admin')

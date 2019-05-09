@@ -2,7 +2,7 @@
   <div>
     <h2 class="comments-title">Comments:</h2>
     <app-comment-form />
-    <app-comment-list v-if="false" />
+    <app-comment-list v-if="comments.length" :comments="comments" />
     <p v-else class="text-center"><b>No comments.</b></p>
   </div>
 </template>
@@ -15,6 +15,12 @@ export default {
   components: {
     AppCommentList,
     AppCommentForm
+  },
+
+  props: {
+    comments: {
+      type: Array
+    }
   }
 }
 </script>

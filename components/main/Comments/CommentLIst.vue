@@ -1,6 +1,6 @@
 <template>
   <ul class="comment-list">
-    <li class="comment-list__item">
+    <li v-for="comment in comments" :key="comment._id" class="comment-list__item">
       <el-card class="comment">
         <header class="comment__header">
           <span class="comment__person-name">Person Name</span>
@@ -28,6 +28,17 @@
     </li>
   </ul>
 </template>
+
+<script>
+export default {
+  props: {
+    comments: {
+      type: Array
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 .comment-list {

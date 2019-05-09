@@ -5,28 +5,34 @@
     shadow="hover"
   >
     <header class="post-card__header" slot="header">
-      <h3 class="post-card__title">Post title</h3>
+      <h3 class="post-card__title">{{ post.title }}</h3>
       <small>
-        <span class="el-icon-time"></span> {{ new Date().toLocaleString() }}
+        <span class="el-icon-time"></span> {{ new Date(post.date).toLocaleString() }}
       </small>
     </header>
 
     <div class="post-card__body">
-      <img class="post-card__img" src="https://cdn.tripzaza.com/ru/destinations/files/2017/09/Berlin-e1505798693967.jpg" alt="">
+      <img class="post-card__img" :src="this.post.imageUrl" :alt="this.post.title">
     </div>
 
     <footer class="post-card__footer">
       <el-button @click="openPost" round>Open</el-button>
-      <small><span class="el-icon-message"></span> 12</small>
+      <small><span class="el-icon-message"></span> {{ post.comments.length }}</small>
     </footer>
   </el-card>
 </template>
 
 <script>
 export default {
+  props: {
+    post: {
+      type: Object
+    }
+  },
+
   methods: {
     openPost() {
-      this.$router.push('/post/f');
+      this.$router.push(`/post/${this.post._id}`);
     }
   }
 }

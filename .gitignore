@@ -84,3 +84,4 @@ dist
 sw.*
 
 server/keys.js
+static/img/*
