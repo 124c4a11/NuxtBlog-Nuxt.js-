@@ -3,26 +3,13 @@
     <li v-for="comment in comments" :key="comment._id" class="comment-list__item">
       <el-card class="comment">
         <header class="comment__header">
-          <span class="comment__person-name">Person Name</span>
+          <span class="comment__person-name">{{ comment.name }}</span>
           <small>
-            <span class="el-icon-time"></span> {{ new Date().toLocaleString() }}
+            <span class="el-icon-time"></span> {{ new Date(comment.date).toLocaleString() }}
           </small>
         </header>
         <div class="comment__body">
-          Lorem ipsum dolor sit amet.
-        </div>
-      </el-card>
-    </li>
-    <li class="comment-list__item">
-      <el-card class="comment">
-        <header class="comment__header">
-          <span class="comment__person-name">Person Name</span>
-          <small>
-            <span class="el-icon-time"></span> {{ new Date().toLocaleString() }}
-          </small>
-        </header>
-        <div class="comment__body">
-          Lorem ipsum dolor sit amet.
+          {{ comment.text }}
         </div>
       </el-card>
     </li>

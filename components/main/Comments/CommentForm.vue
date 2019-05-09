@@ -6,10 +6,10 @@
     @submit.native.prevent="onSubmit"
   >
     <el-form-item label="Name" prop="name">
-      <el-input v-model.trim="controls.name" />
+      <el-input v-model="controls.name" />
     </el-form-item>
     <el-form-item label="Message" prop="text">
-      <el-input v-model.trim="controls.text" type="textarea" />
+      <el-input v-model="controls.text" type="textarea" />
     </el-form-item>
     <el-form-item>
       <el-button
@@ -25,6 +25,12 @@
 
 <script>
 export default {
+  props: {
+    postId: {
+      type: String
+    }
+  },
+
   data () {
     return {
       loading: false,
@@ -48,18 +54,25 @@ export default {
 
   methods: {
     onSubmit() {
-      this.$refs.form.validate((valid) => {
+      this.$refs.form.validate(async (valid) => {
         if (valid) {
           this.loading = true
 
           const formData = {
-            postId: '',
+            postId: this.postId,
             name: this.controls.name,
             text: this.controls.text
           }
 
           try {
+            const newComment = await this.$store.dispatch('comments/create', formData)
+
             this.$message.success('Comment added')
+            this.$emit('created', newComment)
+
+            this.loading = false
+
+            this.$refs.form.resetFields()
           } catch (err) {
             this.loading = false
           }

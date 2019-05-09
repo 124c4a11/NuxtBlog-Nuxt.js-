@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="comments-title">Comments:</h2>
-    <app-comment-form />
+    <app-comment-form :postId="postId" @created="createComment" />
     <app-comment-list v-if="comments.length" :comments="comments" />
     <p v-else class="text-center"><b>No comments.</b></p>
   </div>
@@ -20,6 +20,16 @@ export default {
   props: {
     comments: {
       type: Array
+    },
+
+    postId: {
+      type: String
+    }
+  },
+
+  methods: {
+    createComment(comment) {
+      this.comments.unshift(comment)
     }
   }
 }
