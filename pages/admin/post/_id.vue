@@ -99,6 +99,10 @@ export default {
     resetForm(form) {
       this.$refs[form].resetFields()
     }
+  },
+
+  mounted() {
+    this.controls.text = this.post.text
   }
 }
 </script>

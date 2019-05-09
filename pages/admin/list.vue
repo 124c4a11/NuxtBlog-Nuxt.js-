@@ -66,9 +66,10 @@ export default {
 
   middleware: ['admin-auth'],
 
-  async asyncData({ store }) {
+
+ async asyncData({ store }) {
     const posts = await store.dispatch('posts/fetchAdminPosts')
-    return { posts };
+    return posts
   },
 
   methods: {
