@@ -51,7 +51,7 @@ router.delete(
 // /api/post
 router.get('/', postController.getAll)
 
-router.get('/:di', postController.getById)
+router.get('/:id', postController.getById)
 
 router.put('/add/view/:id', postController.addView)
 

@@ -17,7 +17,7 @@ export const actions = {
 
   async fetchPostById({ commit }, id) {
     try {
-      return await this.$axios.$get(`/api/post/admin/${id}`)
+      return await this.$axios.$get(`/api/post/${id}`)
     } catch (err) {
       commit('setError', err, { root: true })
       throw err
