@@ -64,6 +64,11 @@
 export default {
   layout: 'admin',
 
+  head: {
+    title: `Post List | ${process.env.appName}`
+  },
+
+
   middleware: ['admin-auth'],
 
 

@@ -12,6 +12,12 @@ import AppPost from '@/components/main/Post'
 import AppComments from '@/components/main/Comments/Comments'
 
 export default {
+  head() {
+    return {
+      title: `${this.post.title} | ${process.env.appName}`
+    }
+  },
+
   validate({ params }) {
     return Boolean(params.id)
   },

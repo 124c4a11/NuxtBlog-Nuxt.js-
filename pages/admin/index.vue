@@ -20,6 +20,10 @@ import AppAnalyticsChart from '@/components/admin/AnalyticsChart'
 export default {
   layout: 'admin',
 
+  head: {
+    title: `Analytics | ${process.env.appName}`
+  },
+
   middleware: ['admin-auth'],
 
   components: {

@@ -16,7 +16,7 @@ import AppPostCard from '@/components/main/PostCard.vue'
 
 export default {
   head: {
-    title: 'Home'
+    title: `Home | ${process.env.appName}`
   },
 
   components: {

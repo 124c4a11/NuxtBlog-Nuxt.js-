@@ -42,7 +42,7 @@ export default {
 
   head() {
     return {
-      title: `${this.post.title}`
+      title: `${this.post.title} | ${process.env.appName}`
     }
   },
 

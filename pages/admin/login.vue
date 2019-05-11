@@ -33,6 +33,10 @@
 export default {
   layout: 'empty',
 
+  head: {
+    title: `Login | ${process.env.appName}`
+  },
+
   data () {
     return {
       loading: false,

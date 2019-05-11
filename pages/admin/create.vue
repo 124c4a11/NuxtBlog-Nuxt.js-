@@ -65,13 +65,11 @@
 export default {
   layout: 'admin',
 
-  middleware: ['admin-auth'],
-
-  head() {
-    return {
-      title: 'Add Post'
-    }
+  head: {
+    title: `Add Post | ${process.env.appName}`
   },
+
+  middleware: ['admin-auth'],
 
   data () {
     return {
