@@ -14,7 +14,7 @@
       <el-form-item>
         <small class="mr-1">
           <span class="el-icon-time"></span>
-          {{ new Date(post.date).toLocaleString() }}
+          {{ post.date | date }}
         </small>
         <small>
           <span class="el-icon-view"></span>

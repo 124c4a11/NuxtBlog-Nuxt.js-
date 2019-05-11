@@ -9,7 +9,7 @@
       </div>
       <div class="post__header-row">
         <small>
-          <span class="el-icon-time"></span> {{ new Date(post.date).toLocaleString() }}
+          <span class="el-icon-time"></span> {{ post.date | date('date') }}
         </small>
         <small>
           <span class="el-icon-view"></span> {{ post.views }}

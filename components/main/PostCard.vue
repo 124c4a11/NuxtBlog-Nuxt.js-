@@ -7,7 +7,7 @@
     <header class="post-card__header" slot="header">
       <h3 class="post-card__title">{{ post.title }}</h3>
       <small>
-        <span class="el-icon-time"></span> {{ new Date(post.date).toLocaleString() }}
+        <span class="el-icon-time"></span> {{ post.date | date('date') }}
       </small>
     </header>
 
