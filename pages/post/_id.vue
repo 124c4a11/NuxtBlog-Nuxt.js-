@@ -9,7 +9,7 @@
 
 <script>
 import AppPost from '@/components/main/Post'
-import AppComments from '@/components/main/Comments/Comments'
+import AppComments from '@/components/main/Comments'
 
 export default {
   head() {
