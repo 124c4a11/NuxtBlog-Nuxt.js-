@@ -4,9 +4,6 @@ const pkg = require('./package')
 module.exports = {
   mode: 'universal',
 
-  /*
-  ** Headers of the page
-  */
   head: {
     title: pkg.name,
     meta: [
@@ -19,58 +16,35 @@ module.exports = {
     ]
   },
 
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#409EFF' },
 
-  /*
-  ** Global CSS
-  */
   css: [
     'element-ui/lib/theme-chalk/index.css',
     '@/theme/index.scss'
   ],
 
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [
     '@/plugins/globals',
     '@/plugins/axios'
   ],
 
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // Doc: https://pwa.nuxtjs.org/setup.html
     '@nuxtjs/pwa'
   ],
-  /*
-  ** Axios module configuration
-  */
+
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
 
   env: {
     appName: 'SSR Blog'
   },
 
-  /*
-  ** Build configuration
-  */
   build: {
     transpile: [/^element-ui/],
-
-    /*
-    ** You can extend webpack config here
-    */
     extend(config, ctx) {
+
     }
   }
 }
