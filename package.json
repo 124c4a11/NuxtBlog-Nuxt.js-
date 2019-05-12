@@ -12,7 +12,7 @@
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "nede": "11.x"
+    "node": "11.x"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
