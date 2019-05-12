@@ -3,7 +3,7 @@
     <el-header>
       <app-navigation />
     </el-header>
-    <el-main>
+    <el-main class="pb-4">
       <nuxt />
     </el-main>
   </el-container>
